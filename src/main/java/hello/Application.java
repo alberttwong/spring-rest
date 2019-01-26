@@ -68,7 +68,7 @@ public class Application {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("Openshift uncontained.io Sample REST API")
+            .title("Albert's Openshift uncontained.io Sample REST API")
             .description("A sample REST API to demonstrate Spring Boot Applications in Openshift.")
             .license("Apache License Version 2.0")
             .licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE")
