@@ -1,4 +1,3 @@
-```
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
@@ -23,4 +22,3 @@ spec:
         secret: 4LXwMdx9vhQY4WXbLcFR
       type: Generic
     - type: ConfigChange
-```
