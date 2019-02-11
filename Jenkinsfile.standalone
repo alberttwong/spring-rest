@@ -1,1 +1,37 @@
-
+pipeline {
+  agent {
+      label 'maven'
+  }
+  stages {
+    stage('Build Image') {
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.withProject() {
+              openshift.startBuild("spring-rest",
+                                   "--wait")
+            }
+          }
+        }
+      }
+    }
+    stage('Deploy') {
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.withProject() {
+              def result, dc = openshift.selector("dc", "spring-rest")
+              dc.rollout().latest()
+              timeout(10) {
+                  result = dc.rollout().status("-w")
+              }
+              if (result.status != 0) {
+                  error(result.err)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
