@@ -12,6 +12,8 @@ spec:
   strategy:
     jenkinsPipelineStrategy:
       env:
+        - name: "GIT_SSL_NO_VERIFY"
+          value: "yes"
       jenkinsfilePath: Jenkinsfile.standalone
     type: JenkinsPipeline
   triggers:
